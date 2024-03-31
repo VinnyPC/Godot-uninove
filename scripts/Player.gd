@@ -1,17 +1,27 @@
 extends KinematicBody2D
 
+signal laser_shot(laser)
+
 # Declaração de variaveis
 export var acceleration := 10.0
 export var max_speed := 350.0
 export var rotation_speed := 230.00
 var velocity = Vector2()
 
+onready var muzzle = $Muzzle
+
+var laser_scene = preload("res://cenas/Laser.tscn")
+
+func _process(delta):
+	if Input.is_action_just_pressed("atirar"):
+		shoot_laser()
+
 func _physics_process(delta):
+	# entrada do jogador para mover para frente ou para trás
 	var input_vector := Vector2(0, Input.get_axis("mover_frente", "mover_tras"))
 	
 
-	# Adiciona a aceleração à velocidade com base na entrada do jogador dando a impressao de aceleração
-	# (igual uma nave msm kkkk)
+	# Adiciona a aceleração a velocidade com base na entrada do jogador dando a impressao de aceleração
 	velocity += input_vector.rotated(rotation) * acceleration
 	# Limita a velocidade máxima
 	velocity = velocity.limit_length(max_speed)
@@ -39,3 +49,12 @@ func _physics_process(delta):
 		global_position.x = screen_size.x
 	elif global_position.x > screen_size.x:
 		global_position.x = 0
+
+func shoot_laser():
+	var l = laser_scene.instance()
+	l.global_position = muzzle.global_position
+	l.rotation = rotation
+	emit_signal("laser_shot", l)
+
+
+
