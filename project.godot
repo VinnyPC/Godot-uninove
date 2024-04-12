@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "Asteroid",
+"language": "GDScript",
+"path": "res://scripts/Asteroid.gd"
+} ]
+_global_script_class_icons={
+"Asteroid": ""
+}
+
 [application]
 
 config/name="Asteroids"
