@@ -19,15 +19,15 @@ func _ready():
 			randomize()
 			speed = rand_range(50, 100)
 			sprite.texture = preload("res://assets/PNG/Meteors/meteorGrey_big1.png")
-			cshape.shape = preload("res://recursos/Asteroid_cshape_large.tres")
+			cshape.set_deferred("shape", preload("res://recursos/Asteroid_cshape_large.tres"))
 		AsteroidSize.MEDIUM:
 			speed = rand_range(100, 150)
 			sprite.texture = preload("res://assets/PNG/Meteors/meteorGrey_med1.png")
-			cshape.shape = preload("res://recursos/Asteroid_cshape_medium.tres")
+			cshape.set_deferred("shape", preload("res://recursos/Asteroid_cshape_medium.tres"))
 		AsteroidSize.SMALL:
 			speed = rand_range(100, 200)
 			sprite.texture = preload("res://assets/PNG/Meteors/meteorGrey_small1.png")
-			cshape.shape = preload("res://recursos/Asteroid_cshape_small.tres")
+			cshape.set_deferred("shape", preload("res://recursos/Asteroid_cshape_small.tres"))
 	print(speed)
 
 func _physics_process(delta):
