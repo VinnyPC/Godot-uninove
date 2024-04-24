@@ -28,7 +28,6 @@ func _ready():
 			speed = rand_range(100, 200)
 			sprite.texture = preload("res://assets/PNG/Meteors/meteorGrey_small1.png")
 			cshape.set_deferred("shape", preload("res://recursos/Asteroid_cshape_small.tres"))
-	print(speed)
 
 func _physics_process(delta):
 	global_position += movement_vector.rotated(rotation) * speed * delta
