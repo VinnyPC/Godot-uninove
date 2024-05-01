@@ -1,7 +1,7 @@
-extends KinematicBody2D
+class_name Player extends KinematicBody2D
 
 signal laser_shot(laser)
-
+signal died
 # Declaração de variaveis
 export var acceleration := 10.0
 export var max_speed := 350.0
@@ -9,9 +9,10 @@ export var rotation_speed := 230.00
 var velocity = Vector2()
 
 onready var muzzle = $Muzzle
+onready var sprite = $Sprite
 
 var laser_scene = preload("res://cenas/Laser.tscn")
-
+var alive := true
 func _process(delta):
 	if Input.is_action_just_pressed("atirar"):
 		shoot_laser()
@@ -56,5 +57,19 @@ func shoot_laser():
 	l.rotation = rotation
 	emit_signal("laser_shot", l)
 
-
+func die():
+	if alive==true:
+		alive = false
+		emit_signal("died")
+		sprite.visible = false
+		set_process(false)
+		
+func respawn(pos):
+	if alive==false:
+		alive = true
+		global_position = pos
+		velocity = Vector2.ZERO
+		sprite.visible = true
+		set_process(true)
+		
 
