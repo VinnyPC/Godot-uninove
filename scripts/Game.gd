@@ -34,7 +34,10 @@ func _on_asteroid_exploded(pos, size):
 				spawn_asteroid(pos, Asteroid.AsteroidSize.SMALL)
 			Asteroid.AsteroidSize.SMALL:
 				score += 200
-				pass
+				# Spawn a new LARGE asteroid at a random corner of the screen
+				randomize()
+				var spwn_pos = Vector2(randi() % int(get_viewport().size.x), randi() % int(get_viewport().size.y))
+				spawn_asteroid(spwn_pos, Asteroid.AsteroidSize.LARGE)
 	score_label.text = "Pontos: " + str(score)
 			
 func spawn_asteroid(pos, size):
