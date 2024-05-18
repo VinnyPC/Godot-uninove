@@ -12,7 +12,7 @@ var asteroid_scene = preload("res://cenas/Asteroid.tscn")
 var ufo_scene = preload("res://cenas/UFO.tscn")
 var score := 0
 
-var lives = 1
+export var lives = 1
 func _ready():
 	_spawn_ufo()
 	game_over_screen.visible = false
