@@ -15,13 +15,14 @@ var laser_scene = preload("res://cenas/Laser.tscn")
 var alive := true
 
 var is_invincible = false
+var invincibility_duration = 5
 var invincibility_timer = Timer.new()
 
 onready var game = get_tree().get_root().get_node("Game")
 
 func _ready():
 	add_child(invincibility_timer)
-	invincibility_timer.connect("timeout", self, "_end_invincibility")
+	invincibility_timer.connect("timeout", self, "end_invincibility")
 
 func _process(delta):
 	if Input.is_action_just_pressed("atirar"):
@@ -84,9 +85,9 @@ func respawn(pos):
 		
 func start_invincibility():
 	is_invincible = true
-	invincibility_timer.start(5)  # Invencibilidade dura 5 segundos
+	invincibility_timer.start(invincibility_duration)   # Invencibilidade dura 5 segundos
 
-func _end_invincibility():
+func end_invincibility():
 	is_invincible = false
 
 func gain_extra_life():

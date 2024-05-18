@@ -13,6 +13,7 @@ onready var Player = get_node_or_null("res://cenas/Player.tscn")
 var speed := 50
 
 func _ready():
+
 	randomize()
 	rotation = rand_range(0, 2 * PI)
 	
@@ -50,7 +51,18 @@ func explode():
 	emit_signal("exploded", global_position, size)
 	queue_free()
 
+#func _on_Asteroid_body_entered(body):
+#	if (body.name == "Player"):
+#		if body.has_method("is_invincible"):
+#			if not body.is_invincible:
+#				body.die()
+#		else:
+#			print("Body doesn't have method is_invincible")
+
 func _on_Asteroid_body_entered(body):
 	if  (body.name=="Player"):
 		var player = body
-		player.die()
+		if (player.is_invincible):
+			print("have method is_invincible")
+		else:
+			player.die()
