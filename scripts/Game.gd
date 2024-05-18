@@ -6,15 +6,15 @@ onready var asteroids = $Asteroids
 onready var score_label = $UI/hud/Label
 onready var hud = $UI/hud
 onready var game_over_screen = $UI/GameOverScreen
-onready var ufo = $UFO
+#onready var ufo = $UFO
 
 var asteroid_scene = preload("res://cenas/Asteroid.tscn")
-var ufo_scene = preload("res://cenas/UFO.tscn")
+#var ufo_scene = preload("res://cenas/UFO.tscn")
 var score := 0
 
 export var lives = 1
 func _ready():
-	_spawn_ufo()
+#	_spawn_ufo()
 	game_over_screen.visible = false
 	score = 0
 	lives = 1
@@ -26,12 +26,12 @@ func _ready():
 func _on_player_laser_shot(laser):
 	lasers.add_child(laser)
 
-func _spawn_ufo():
-	var ufo_instance = ufo_scene.instance()
-	add_child(ufo_instance)
-	# Posiciona o UFO fora da tela inicialmente
-	ufo_instance.position = Vector2(get_viewport().size.x + 50, rand_range(0, get_viewport().size.y))
-	ufo_instance.show()
+#func _spawn_ufo():
+#	var ufo_instance = ufo_scene.instance()
+#	add_child(ufo_instance)
+#	# Posiciona o UFO fora da tela inicialmente
+#	ufo_instance.position = Vector2(get_viewport().size.x + 50, rand_range(0, get_viewport().size.y))
+#	ufo_instance.show()
 
 func _on_asteroid_exploded(pos, size):
 	for i in range(2):
