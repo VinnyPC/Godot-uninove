@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://scripts/Player.gd"
+}, {
+"base": "Area2D",
+"class": "UFO",
+"language": "GDScript",
+"path": "res://scripts/UFO.gd"
 } ]
 _global_script_class_icons={
 "Asteroid": "",
-"Player": ""
+"Player": "",
+"UFO": ""
 }
 
 [application]
@@ -73,6 +79,7 @@ atirar={
 2d_physics/layer_2="player"
 2d_physics/layer_3="asteroid"
 2d_physics/layer_4="projectile"
+2d_physics/layer_5="ufo"
 
 [physics]
 

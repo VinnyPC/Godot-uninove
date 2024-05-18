@@ -16,3 +16,10 @@ func _on_Laser_area_entered(area):
 		var asteroid = area
 		asteroid.explode()
 		queue_free()
+	elif area is UFO:
+		var ufo = area
+		ufo.die()
+		queue_free()
+		
+
+
