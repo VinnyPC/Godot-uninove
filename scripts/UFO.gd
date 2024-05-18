@@ -1,8 +1,8 @@
 class_name UFO extends Area2D
 
 # velocidade do UFO
-enum PowerUpTypes {INVENCIBILIDADE, METRALHADORA, VIDA}
-export var PowerUpType := PowerUpTypes.METRALHADORA
+enum PowerUpTypes {INVENCIBILIDADE, VIDA}
+export var PowerUpType := PowerUpTypes.VIDA
 export var speed: float = 400.0
 # timer max e min para o ufo
 export var min_interval: float = 20.0
@@ -11,7 +11,6 @@ export var max_interval: float = 30.0
 # Carregue as cenas específicas para cada tipo de power-up
 var power_up_scenes = {
 	PowerUpTypes.INVENCIBILIDADE: preload("res://cenas/PowerUpInvincibilidade.tscn"),
-	PowerUpTypes.METRALHADORA: preload("res://cenas/PowerUpMetralhadora.tscn"),
 	PowerUpTypes.VIDA: preload("res://cenas/PowerUpVida.tscn")
 }
 
@@ -66,10 +65,9 @@ func die():
 	queue_free() 
 
 func drop_power_ups():
-	var power_up_types = [PowerUpTypes.INVENCIBILIDADE, PowerUpTypes.METRALHADORA, PowerUpTypes.VIDA]
+	var power_up_types = [PowerUpTypes.INVENCIBILIDADE, PowerUpTypes.VIDA]
 	var random_index = randi() % power_up_types.size()
 	var power_up_type = power_up_types[random_index]
-	
 	var power_up_scene = power_up_scenes[power_up_type]
 	var power_up = power_up_scene.instance()
 	power_up.position = position
@@ -79,7 +77,5 @@ func apply_power_up(player):
 	match PowerUpType:
 		PowerUpTypes.INVENCIBILIDADE:
 			player.start_invincibility()
-		PowerUpTypes.METRALHADORA:
-			player.enable_machine_gun()
 		PowerUpTypes.VIDA:
 			player.gain_extra_life()

@@ -14,24 +14,18 @@ onready var sprite = $Sprite
 var laser_scene = preload("res://cenas/Laser.tscn")
 var alive := true
 
-#var is_invincible = false
-#var machine_gun_enabled = false
-#var invincibility_timer = Timer.new()
-#var machine_gun_timer = Timer.new()
+var is_invincible = false
+var invincibility_timer = Timer.new()
 
-#onready var game = get_tree().get_root().get_node("Game")
+onready var game = get_tree().get_root().get_node("Game")
 
-#func _ready():
-##	add_child(invincibility_timer)
-##	add_child(machine_gun_timer)
-##	invincibility_timer.connect("timeout", self, "_end_invincibility")
-##	machine_gun_timer.connect("timeout", self, "_disable_machine_gun")
+func _ready():
+	add_child(invincibility_timer)
+	invincibility_timer.connect("timeout", self, "_end_invincibility")
 
 func _process(delta):
 	if Input.is_action_just_pressed("atirar"):
 		shoot_laser()
-#	elif machine_gun_enabled and Input.is_action_pressed("atirar"):
-#		shoot_laser()
 
 func _physics_process(delta):
 	# entrada do jogador para mover para frente ou para trás
@@ -88,19 +82,12 @@ func respawn(pos):
 		sprite.visible = true
 		set_process(true)
 		
-#func start_invincibility():
-#	is_invincible = true
-#	invincibility_timer.start(5)  # Invencibilidade dura 5 segundos
-#
-#func _end_invincibility():
-#	is_invincible = false
+func start_invincibility():
+	is_invincible = true
+	invincibility_timer.start(5)  # Invencibilidade dura 5 segundos
 
-#func enable_machine_gun():
-#	machine_gun_enabled = true
-#	machine_gun_timer.start(10)  # Metralhadora dura 10 segundos
-#
-#func _disable_machine_gun():
-#	machine_gun_enabled = false
-#
-#func gain_extra_life():
-#	game.lives += 1
+func _end_invincibility():
+	is_invincible = false
+
+func gain_extra_life():
+	game.lives += 1
