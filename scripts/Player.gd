@@ -1,4 +1,4 @@
-class_name Player extends KinematicBody2D
+extends KinematicBody2D
 
 signal laser_shot(laser)
 signal died
@@ -25,6 +25,7 @@ func _ready():
 	invincibility_timer.connect("timeout", self, "end_invincibility")
 
 func _process(delta):
+	
 	if Input.is_action_just_pressed("atirar"):
 		shoot_laser()
 
@@ -74,7 +75,43 @@ func die():
 		emit_signal("died")
 		sprite.visible = false
 		set_process(false)
+		check_respawn()  # Verifica se deve respawnar o jogador após a morte
+
+func check_respawn():
+	if game.lives > 0:
+		var respawn_position = get_valid_respawn_position()
+		if respawn_position != Vector2.ZERO:
+			respawn(respawn_position)
+		else:
+			print("Não foi possível encontrar uma posição válida de respawn.")
+	else:
+		print("Game Over")
 		
+func get_valid_respawn_position():
+	var center_screen = get_viewport_rect().size / 2
+	var respawn_position = center_screen
+	var attempts = 10  # Limite de tentativas para encontrar uma posição válida
+	
+	while attempts > 0:
+		if !is_colliding_with_asteroid(respawn_position):
+			return respawn_position
+		respawn_position = generate_random_position_around_center(center_screen)
+		attempts -= 1
+	
+	return Vector2.ZERO
+
+func is_colliding_with_asteroid(position):
+	var asteroids = get_tree().get_nodes_in_group("Asteroids")
+	for asteroid in asteroids:
+		if asteroid.get_collision_shape_2d(0).collide_point(position):
+			return true
+	return false
+
+func generate_random_position_around_center(center):
+	var screen_size = get_viewport_rect().size
+	var offset = Vector2(rand_range(-screen_size.x / 2, screen_size.x / 2), rand_range(-screen_size.y / 2, screen_size.y / 2))
+	return center + offset
+
 func respawn(pos):
 	if alive == false:
 		alive = true
@@ -82,6 +119,7 @@ func respawn(pos):
 		velocity = Vector2.ZERO
 		sprite.visible = true
 		set_process(true)
+		start_invincibility()
 		
 func start_invincibility():
 	is_invincible = true
