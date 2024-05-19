@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Restricted-Zone_Looping.ogg-f1fc3f15465780a545d2c0def080f277.oggstr"
+
+[deps]
+
+source_file="res://assets/Astro-01_GDevelop5-source/astro-01/media/music/Restricted-Zone_Looping.ogg"
+dest_files=[ "res://.import/Restricted-Zone_Looping.ogg-f1fc3f15465780a545d2c0def080f277.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/hull_damage.ogg-79316c1b0ecb71c7391c798c9a28c5e5.oggstr"
+
+[deps]
+
+source_file="res://assets/Astro-01_GDevelop5-source/astro-01/media/sounds/hull_damage.ogg"
+dest_files=[ "res://.import/hull_damage.ogg-79316c1b0ecb71c7391c798c9a28c5e5.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

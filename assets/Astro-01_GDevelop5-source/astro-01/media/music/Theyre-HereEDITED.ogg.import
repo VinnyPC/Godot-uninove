@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Theyre-HereEDITED.ogg-7a0167b59868e51288abe84dbc91a746.oggstr"
+
+[deps]
+
+source_file="res://assets/Astro-01_GDevelop5-source/astro-01/media/music/Theyre-HereEDITED.ogg"
+dest_files=[ "res://.import/Theyre-HereEDITED.ogg-7a0167b59868e51288abe84dbc91a746.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

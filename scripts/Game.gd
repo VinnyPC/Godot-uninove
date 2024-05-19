@@ -42,8 +42,6 @@ func _on_asteroid_exploded(pos, size):
 			Asteroid.AsteroidSize.MEDIUM:
 				score += 150
 				spawn_asteroid(pos, Asteroid.AsteroidSize.SMALL)
-			Asteroid.AsteroidSize.SMALL:
-				score += 200
 				# Spawn a new LARGE asteroid at a random corner of the screen
 				randomize()
 				var spwn_pos = Vector2(rand_range(0, get_viewport().size.x), rand_range(0, get_viewport().size.y))
@@ -71,5 +69,3 @@ func _on_player_died():
 	if lives <= 0:
 		yield(get_tree().create_timer(1), "timeout")
 		game_over_screen.visible = true
-		
-	

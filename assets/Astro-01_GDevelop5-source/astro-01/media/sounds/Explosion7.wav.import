@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Explosion7.wav-066b95b7a8409f52d8e8ec9e92ac6ef1.sample"
+
+[deps]
+
+source_file="res://assets/Astro-01_GDevelop5-source/astro-01/media/sounds/Explosion7.wav"
+dest_files=[ "res://.import/Explosion7.wav-066b95b7a8409f52d8e8ec9e92ac6ef1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
