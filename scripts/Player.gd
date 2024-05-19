@@ -10,6 +10,7 @@ var velocity = Vector2()
 
 onready var muzzle = $Muzzle
 onready var sprite = $Sprite
+onready var spritePropulsor = $Propulsor
 
 var laser_scene = preload("res://cenas/Laser.tscn")
 var alive := true
@@ -37,6 +38,11 @@ func _physics_process(delta):
 	velocity += input_vector.rotated(rotation) * acceleration
 	# Limita a velocidade máxima
 	velocity = velocity.limit_length(max_speed)
+	
+	if Input.is_action_pressed("mover_frente"):
+		spritePropulsor.visible = true
+	else:
+		spritePropulsor.visible = false
 	
 	if Input.is_action_pressed("girar_direita"):
 		rotate(deg2rad(rotation_speed * delta))
