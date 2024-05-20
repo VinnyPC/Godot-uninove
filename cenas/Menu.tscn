@@ -15,8 +15,8 @@ font_data = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 648, 313 )
-scale = Vector2( 1.14295, 1.14028 )
+position = Vector2( 639, 362 )
+scale = Vector2( 0.995312, 0.997222 )
 texture = ExtResource( 3 )
 
 [node name="StartLabel" type="Label" parent="."]
@@ -30,10 +30,10 @@ custom_fonts/font = SubResource( 1 )
 text = "[F] Inserir Ficha"
 
 [node name="CoinLabel" type="Label" parent="."]
-margin_left = 984.0
-margin_top = 669.0
-margin_right = 1387.0
-margin_bottom = 715.0
+margin_left = 961.0
+margin_top = 631.0
+margin_right = 1364.0
+margin_bottom = 677.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 1, 0, 1 )
 custom_fonts/font = SubResource( 1 )

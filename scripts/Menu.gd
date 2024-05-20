@@ -6,10 +6,12 @@ onready var blink_timer = $BlinkTimer
 onready var music_player_menu = $MusicPlayerMenu
 onready var music_player_coin = $MusicPlayerCoin
 
-var coin_count = 0
+export var coin_count = 0
 var insert_coin_text = "inserir ficha"
 var start_game_text = "aperte enter"
 var showing_insert_coin_text = true
+
+signal coin_inserted
 
 func _ready():
 	blink_timer.connect("timeout", self, "_on_blink_timer_timeout")
@@ -32,4 +34,4 @@ func _process(delta):
 		start_label.text = start_game_text
 		start_label.visible = true
 		showing_insert_coin_text = false
-
+		emit_signal("coin_inserted")

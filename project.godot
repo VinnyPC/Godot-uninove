@@ -30,6 +30,10 @@ config/name="Asteroids"
 run/main_scene="res://cenas/Menu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+CRTOverlay="*res://cenas/CRTOverlay.tscn"
+
 [display]
 
 window/size/width=1280

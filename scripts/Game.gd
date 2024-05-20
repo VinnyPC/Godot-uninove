@@ -8,12 +8,14 @@ onready var hud = $UI/hud
 onready var game_over_screen = $UI/GameOverScreen
 onready var ufo = $UFO
 onready var soundtrack = $GameSoundtrack
+onready var menu = $Menu
 
 var asteroid_scene = preload("res://cenas/Asteroid.tscn")
 var ufo_scene = preload("res://cenas/UFO.tscn")
 var score := 0
 
 export var lives = 1
+
 func _ready():
 	soundtrack.play()
 	_spawn_ufo()
@@ -24,6 +26,7 @@ func _ready():
 	player.connect("died", self, "_on_player_died")
 	for asteroid in asteroids.get_children():
 		asteroid.connect("exploded", self, "_on_asteroid_exploded")
+		
 
 func _on_player_laser_shot(laser):
 	lasers.add_child(laser)
