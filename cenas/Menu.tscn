@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/Astro-01_GDevelop5-source/astro-01/media/fonts/pixel_font.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=2]
 [ext_resource path="res://assets/Backgrounds/main_menu.png" type="Texture" id=3]
+[ext_resource path="res://assets/Sounds/menu_theme.mp3" type="AudioStream" id=4]
+[ext_resource path="res://assets/Sounds/coin_sound.wav" type="AudioStream" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 37
@@ -25,7 +27,7 @@ margin_bottom = 555.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 1, 0, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "Inserir Ficha"
+text = "[F] Inserir Ficha"
 
 [node name="CoinLabel" type="Label" parent="."]
 margin_left = 984.0
@@ -40,3 +42,10 @@ text = "Fichas:0"
 [node name="BlinkTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
+
+[node name="MusicPlayerMenu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+
+[node name="MusicPlayerCoin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )

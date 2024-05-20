@@ -7,6 +7,7 @@ onready var score_label = $UI/hud/Label
 onready var hud = $UI/hud
 onready var game_over_screen = $UI/GameOverScreen
 onready var ufo = $UFO
+onready var soundtrack = $GameSoundtrack
 
 var asteroid_scene = preload("res://cenas/Asteroid.tscn")
 var ufo_scene = preload("res://cenas/UFO.tscn")
@@ -14,6 +15,7 @@ var score := 0
 
 export var lives = 1
 func _ready():
+	soundtrack.play()
 	_spawn_ufo()
 	game_over_screen.visible = false
 	score = 0

@@ -9,6 +9,7 @@ export var size := AsteroidSize.LARGE
 onready var sprite = $Sprite
 onready var cshape = $CollisionShape2D
 onready var Player = get_node_or_null("res://cenas/Player.tscn")
+onready var explosionSound = $ExplosionSound
 
 var speed := 50
 
@@ -61,6 +62,7 @@ func _physics_process(delta):
 		
 func explode():
 	emit_signal("exploded", global_position, size)
+	explosionSound.play()
 	queue_free()
 
 func _on_Asteroid_body_entered(body):

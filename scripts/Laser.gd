@@ -3,6 +3,8 @@ extends Area2D
 var movement_vector := Vector2(0, -1)
 export var speed := 500.0
 
+onready var explosionSound = $ExplosionSound
+
 func _physics_process(delta):
 	global_position += movement_vector.rotated(rotation) * speed * delta
 

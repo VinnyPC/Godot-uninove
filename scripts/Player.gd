@@ -11,6 +11,8 @@ var velocity = Vector2()
 onready var muzzle = $Muzzle
 onready var sprite = $Sprite
 onready var spritePropulsor = $Propulsor
+onready var laserSound = $LaserSound
+onready var propulsorSound = $PropulsorSound
 
 var laser_scene = preload("res://cenas/Laser.tscn")
 var alive := true
@@ -28,6 +30,7 @@ func _ready():
 func _process(delta):
 	
 	if Input.is_action_just_pressed("atirar"):
+		laserSound.play()
 		shoot_laser()
 
 func _physics_process(delta):
@@ -43,6 +46,7 @@ func _physics_process(delta):
 		spritePropulsor.visible = true
 	else:
 		spritePropulsor.visible = false
+		propulsorSound.play()
 	
 	if Input.is_action_pressed("girar_direita"):
 		rotate(deg2rad(rotation_speed * delta))

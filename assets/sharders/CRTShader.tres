@@ -1,0 +1,28 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+void fragment() {
+    vec2 uv = FRAGCOORD.xy / SCREEN_PIXEL_SIZE;
+
+    // Curvatura da tela
+    vec2 curved_uv = uv;
+    curved_uv -= 0.5;
+    curved_uv *= vec2(1.0, 0.7) + length(curved_uv) * 0.1;
+    curved_uv += 0.5;
+
+    // Linhas de varredura (scanlines)
+    float scanline = sin(curved_uv.y * SCREEN_PIXEL_SIZE.y * 3.14159) * 0.1;
+    vec4 color = texture(SCREEN_TEXTURE, curved_uv);
+    color.rgb -= scanline;
+
+    // Aberração cromática
+    vec3 chroma_offset = vec3(0.005, -0.005, 0.0);
+    color.r = texture(SCREEN_TEXTURE, curved_uv + chroma_offset.r).r;
+    color.g = texture(SCREEN_TEXTURE, curved_uv + chroma_offset.g).g;
+    color.b = texture(SCREEN_TEXTURE, curved_uv + chroma_offset.b).b;
+
+    COLOR = color;
+}
+"

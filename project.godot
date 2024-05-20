@@ -39,6 +39,12 @@ window/size/height=720
 
 common/drop_mouse_on_gui_input_disabled=true
 
+[importer_defaults]
+
+mp3={
+"loop": false
+}
+
 [input]
 
 mover_frente={
