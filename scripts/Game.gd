@@ -1,3 +1,4 @@
+# Script do Game
 extends Node2D
 
 onready var lasers = $Lasers
@@ -8,7 +9,6 @@ onready var hud = $UI/hud
 onready var game_over_screen = $UI/GameOverScreen
 onready var ufo = $UFO
 onready var soundtrack = $GameSoundtrack
-onready var menu = $Menu
 
 var asteroid_scene = preload("res://cenas/Asteroid.tscn")
 var ufo_scene = preload("res://cenas/UFO.tscn")
@@ -21,12 +21,11 @@ func _ready():
 	_spawn_ufo()
 	game_over_screen.visible = false
 	score = 0
-	lives = 1
+	# Use a quantidade de vidas definida pela cena do menu
 	player.connect("laser_shot", self, "_on_player_laser_shot")
 	player.connect("died", self, "_on_player_died")
 	for asteroid in asteroids.get_children():
 		asteroid.connect("exploded", self, "_on_asteroid_exploded")
-		
 
 func _on_player_laser_shot(laser):
 	lasers.add_child(laser)
