@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/PNG/playerShip1.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://assets/PNG/Effects/fire05.png" type="Texture" id=3]
 [ext_resource path="res://assets/Sounds/Laser_Shoot.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/Sounds/thruster.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/Astro-01_GDevelop5-source/astro-01/media/ships/shield_1.png" type="Texture" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 29.0689
@@ -40,3 +41,9 @@ stream = ExtResource( 4 )
 [node name="PropulsorSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = 7.0
+
+[node name="Shield" type="Sprite" parent="."]
+position = Vector2( 2, 3 )
+rotation = 3.14159
+scale = Vector2( 0.788699, 0.774364 )
+texture = ExtResource( 6 )

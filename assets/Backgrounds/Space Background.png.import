@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Main Ship - Shields - Round Shield.png-dcc1673e4dbcd1d146646196342864a7.stex"
+path="res://.import/Space Background.png-19ca2f6382a9291e08b9593025a0b36c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Main Ship/Main Ship - Shields/PNGs/Main Ship - Shields - Round Shield.png"
-dest_files=[ "res://.import/Main Ship - Shields - Round Shield.png-dcc1673e4dbcd1d146646196342864a7.stex" ]
+source_file="res://assets/Backgrounds/Space Background.png"
+dest_files=[ "res://.import/Space Background.png-19ca2f6382a9291e08b9593025a0b36c.stex" ]
 
 [params]
 

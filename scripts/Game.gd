@@ -68,6 +68,7 @@ func spawn_asteroid(pos, size):
 	asteroids.add_child(a)
 	
 func _on_player_died():
+	soundtrack.stop()
 	lives -= 1
 	print(lives)
 	if lives <= 0:

@@ -13,6 +13,7 @@ onready var sprite = $Sprite
 onready var spritePropulsor = $Propulsor
 onready var laserSound = $LaserSound
 onready var propulsorSound = $PropulsorSound
+onready var shield = $Shield
 
 var laser_scene = preload("res://cenas/Laser.tscn")
 var alive := true
@@ -28,6 +29,11 @@ func _ready():
 	invincibility_timer.connect("timeout", self, "end_invincibility")
 
 func _process(delta):
+	
+	if is_invincible==true:
+		shield.visible = true
+	else:
+		shield.visible = false
 	
 	if Input.is_action_just_pressed("atirar"):
 		laserSound.play()
@@ -133,7 +139,7 @@ func respawn(pos):
 		
 func start_invincibility():
 	is_invincible = true
-	invincibility_timer.start(invincibility_duration)   # Invencibilidade dura 5 segundos
+	invincibility_timer.start(invincibility_duration) # Invencibilidade dura 5 segundos 
 
 func end_invincibility():
 	is_invincible = false
