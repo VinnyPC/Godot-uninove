@@ -62,7 +62,6 @@ func _physics_process(delta):
 		
 func explode():
 	emit_signal("exploded", global_position, size)
-	explosionSound.play()
 	queue_free()
 
 func _on_Asteroid_body_entered(body):

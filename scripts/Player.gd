@@ -14,6 +14,8 @@ onready var spritePropulsor = $Propulsor
 onready var laserSound = $LaserSound
 onready var propulsorSound = $PropulsorSound
 onready var shield = $Shield
+onready var shieldUp = $ShieldSoundUp
+onready var lifeSound = $Life
 
 var laser_scene = preload("res://cenas/Laser.tscn")
 var alive := true
@@ -96,6 +98,7 @@ func die():
 func check_respawn():
 	if game.lives > 0:
 		var respawn_position = get_valid_respawn_position()
+		
 		if respawn_position != Vector2.ZERO:
 			respawn(respawn_position)
 		else:
@@ -138,11 +141,14 @@ func respawn(pos):
 		start_invincibility()
 		
 func start_invincibility():
+	shieldUp.play()
 	is_invincible = true
 	invincibility_timer.start(invincibility_duration) # Invencibilidade dura 5 segundos 
 
 func end_invincibility():
+	shieldUp.stop()
 	is_invincible = false
 
 func gain_extra_life():
+	lifeSound.play()
 	game.lives += 1

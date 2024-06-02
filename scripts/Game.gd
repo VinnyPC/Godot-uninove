@@ -68,9 +68,8 @@ func spawn_asteroid(pos, size):
 	asteroids.add_child(a)
 	
 func _on_player_died():
-	soundtrack.stop()
 	lives -= 1
-	print(lives)
 	if lives <= 0:
+		soundtrack.stop()
 		yield(get_tree().create_timer(1), "timeout")
 		game_over_screen.visible = true
